@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
-import { defineCustomElements } from '@ionic/pwa-elements/loader';
+import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
 
 @Component({
   selector: 'app-home',
@@ -10,29 +11,38 @@ import { defineCustomElements } from '@ionic/pwa-elements/loader';
 })
 export class HomePage {
 
-  imageSourse: any;
+  imageSource: any;
+  imageFileName: string = 'Photo';
+  imageFileCounter: number = 0;
+  title: string ='';
 
-  constructor() {}
-
-  const takePicture = async () => {
-    const image = await Camera.getPhoto({
-      quality: 90,
-      allowEditing: false,
-      resultType: CameraResultType.DataUrl,
-      Sourse:CameraSource.Prompt
-    });
-  
-    // image.webPath will contain a path that can be set as an image src.
-    // You can access the original file using image.path, which can be
-    // passed to the Filesystem API to read the raw data of the image,
-    // if desired (or pass resultType: CameraResultType.Base64 to getPhoto)
-    this.imageSourse = image.dataUrl;
-  
-    // Can be set to the src of an image now
-    imageElement.[src] = imageUrl;
-  };
-
-
+  constructor(private router: Router) {
+    this.updateTitle();
   }
 
+  updateTitle() {
+    this.title = this.imageFileName +'_'+ this.imageFileCounter;
+  }
+
+  irDetalle() {    this.router.navigate(['./detalle-photo']);  }
+  salir() {    this.router.navigate(['./login']);  }
+
+  takePicture = async () => {
+    try {
+      const imagen = await Camera.getPhoto({
+        quality: 100,
+        allowEditing: false,
+        resultType: CameraResultType.DataUrl,
+        source: CameraSource.Prompt,
+        saveToGallery: true,
+      });
+
+      this.imageSource = imagen.dataUrl;
+      this.imageFileCounter++; // Incrementa el contador
+      this.updateTitle(); // Actualiza el título
+      
+    } catch (error) {
+      console.error('Error al capturar la imagen:', error);
+    }
+  };
 }

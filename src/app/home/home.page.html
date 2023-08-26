@@ -1,71 +1,33 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title slot="start">Blank</ion-title>
+    <ion-button (click)="salir()" slot="end">salir</ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="false">
-  <div>
-    <ion-card>
-      <img alt="Aca deberia mostrar la foto" src="https://ionicframework.com/docs/img/demos/card-media.png" />
-      <ion-card-header>
-        <ion-card-title>Card Title</ion-card-title>
-        <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-      </ion-card-header>
-    
-      <ion-card-content>
-        Here's a small text description for the card content. Nothing more, nothing less.
-      </ion-card-content>
-    </ion-card>
 
-    <ion-card>
-      <img alt="Aca deberia mostrar la foto" src="https://ionicframework.com/docs/img/demos/card-media.png" />
-      <ion-card-header>
-        <ion-card-title>Card Title</ion-card-title>
-        <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-      </ion-card-header>
+  <ion-card *ngIf="imageFileCounter > 0">
+    <img alt=". ¿Foto?" [src]="imageSource" />
+    <ion-card-header>
+      <ion-card-title>{{ title }}</ion-card-title>
+      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      Here's a small text description for the card content. Nothing more, nothing less.
+    </ion-card-content>
     
-      <ion-card-content>
-        Here's a small text description for the card content. Nothing more, nothing less.
-      </ion-card-content>
-    </ion-card>
-    <ion-card>
-      <img alt="Aca deberia mostrar la foto" src="https://ionicframework.com/docs/img/demos/card-media.png" />
-      <ion-card-header>
-        <ion-card-title>Card Title</ion-card-title>
-        <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-      </ion-card-header>
-    
-      <ion-card-content>
-        Here's a small text description for the card content. Nothing more, nothing less.
-      </ion-card-content>
-    </ion-card>
-    <ion-card>
-      <img alt="Aca deberia mostrar la foto" src="https://ionicframework.com/docs/img/demos/card-media.png" />
-      <ion-card-header>
-        <ion-card-title>Card Title</ion-card-title>
-        <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-      </ion-card-header>
-    
-      <ion-card-content>
-        Here's a small text description for the card content. Nothing more, nothing less.
-      </ion-card-content>
-    </ion-card>
-  </div>
+    <ion-button (click)="irDetalle()">Detalle</ion-button>
+  </ion-card>
 
 </ion-content>
 
-<footer>
-  <ion-tabs>
-      <ion-tab-bar slot="bottom">
-          
-          <ion-tab-button tab="radio" ((click)="takePicture()")>
-              <ion-icon name="camera-outline"></ion-icon>
-              Camara
-          </ion-tab-button>
-          
-      </ion-tab-bar>
-  </ion-tabs>
-</footer>
+<ion-footer>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="radio" (click)="takePicture()">
+      <ion-icon name="camera-outline"></ion-icon>
+      Camara
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-footer>
