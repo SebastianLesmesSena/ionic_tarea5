@@ -25,3 +25,9 @@
 #container a {
   text-decoration: none;
 }
+
+.footer {
+  position: relative;
+  bottom: 0;
+  width: 100%; /* Opcional: Para asegurarte de que el footer ocupe todo el ancho */
+}
