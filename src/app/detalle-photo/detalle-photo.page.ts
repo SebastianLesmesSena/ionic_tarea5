@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
-import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
-
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-detalle-photo',
@@ -11,17 +9,25 @@ import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 })
 export class DetallePhotoPage implements OnInit {
 
-  constructor(private router:Router) {}
+  constructor(private router:Router, private route: ActivatedRoute) {}
 
   imageSource: any;
   titulo: string='';
   Descripcion: string='';
 
-  ngOnInit() {}
+  /*Aca se resiven los parametros */
+  ngOnInit() {
+    this.route.queryParams.subscribe((params) => {
+      this.imageSource = params['receivedImageSource'];
+      this.titulo = params['receivedTitulo'];
+      this.Descripcion = params['receivedDescripcion'];
+    });
+  }
 
-  back(){    this.router.navigate(['./home'])  }
+  back(){ this.router.navigate(['./home']) }
 
-  irHome(){this.router.navigate(['/home'], {
+  irHome(){this.router.navigate(['/home'], 
+    {
       queryParams: {
         imageSource: this.imageSource,
         titulo: this.titulo,
@@ -29,22 +35,5 @@ export class DetallePhotoPage implements OnInit {
       },
     });
   }
-
-  takePicture = async () => {
-    try {
-      const imagen = await Camera.getPhoto({
-        quality: 100,
-        allowEditing: false,
-        resultType: CameraResultType.DataUrl,
-        source: CameraSource.Prompt,
-        saveToGallery: true,
-      });
-
-      this.imageSource = imagen.dataUrl;
-
-    } catch (error) {
-      console.error('Error al capturar la imagen:', error);
-    }
-  };
 
 }

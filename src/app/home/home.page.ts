@@ -2,9 +2,6 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 
-import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
-import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
-
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -18,6 +15,7 @@ export class HomePage {
 
   constructor(private router: Router, private route: ActivatedRoute) {}
 
+  /*Aca se resiven los parametros */
   ngOnInit() {
     this.route.queryParams.subscribe((params) => {
       this.receivedImageSource = params['imageSource'];
@@ -26,9 +24,17 @@ export class HomePage {
     });
   }
 
-  irDetalle() {    this.router.navigate(['./detalle-photo']);  }
   irFormulario(){ this.router.navigate(['./formulario']);  }
   salir() {    this.router.navigate(['./login']);  }
 
+  /* aca se envian los parametros*/ 
+  irDetalle() {this.router.navigate(['/detalle-photo'], {
+    queryParams: {
+      receivedImageSource: this.receivedImageSource,
+      receivedTitulo: this.receivedTitulo,
+      receivedDescripcion: this.receivedDescripcion,
+      },
+    });
+  }
 }
 
