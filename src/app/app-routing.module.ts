@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'detalle-photo',
     loadChildren: () => import('./detalle-photo/detalle-photo.module').then( m => m.DetallePhotoPageModule)
   },
+  {
+    path: 'formulario',
+    loadChildren: () => import('./formulario/formulario.module').then( m => m.FormularioPageModule)
+  },
 ];
 
 @NgModule({

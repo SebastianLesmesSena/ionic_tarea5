@@ -1,25 +1,25 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Router } from '@angular/router';
 
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 
-
 @Component({
-  selector: 'app-detalle-photo',
-  templateUrl: './detalle-photo.page.html',
-  styleUrls: ['./detalle-photo.page.scss'],
+  selector: 'app-formulario',
+  templateUrl: './formulario.page.html',
+  styleUrls: ['./formulario.page.scss'],
 })
-export class DetallePhotoPage implements OnInit {
+export class FormularioPage implements OnInit {
 
-  constructor(private router:Router) {}
-
+  constructor(private router:Router) { }
+  
   imageSource: any;
   titulo: string='';
   Descripcion: string='';
 
   ngOnInit() {}
 
-  back(){    this.router.navigate(['./home'])  }
+  back(){ this.router.navigate(['./home'])  }
 
   irHome(){this.router.navigate(['/home'], {
       queryParams: {

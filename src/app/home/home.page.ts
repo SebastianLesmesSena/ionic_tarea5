@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
@@ -11,38 +12,23 @@ import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
 })
 export class HomePage {
 
-  imageSource: any;
-  imageFileName: string = 'Photo';
-  imageFileCounter: number = 0;
-  title: string ='';
+  receivedImageSource: any;
+  receivedTitulo: string='';
+  receivedDescripcion: string='';
 
-  constructor(private router: Router) {
-    this.updateTitle();
-  }
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
-  updateTitle() {
-    this.title = this.imageFileName +'_'+ this.imageFileCounter;
+  ngOnInit() {
+    this.route.queryParams.subscribe((params) => {
+      this.receivedImageSource = params['imageSource'];
+      this.receivedTitulo = params['titulo'];
+      this.receivedDescripcion = params['Descripcion'];
+    });
   }
 
   irDetalle() {    this.router.navigate(['./detalle-photo']);  }
+  irFormulario(){ this.router.navigate(['./formulario']);  }
   salir() {    this.router.navigate(['./login']);  }
 
-  takePicture = async () => {
-    try {
-      const imagen = await Camera.getPhoto({
-        quality: 100,
-        allowEditing: false,
-        resultType: CameraResultType.DataUrl,
-        source: CameraSource.Prompt,
-        saveToGallery: true,
-      });
-
-      this.imageSource = imagen.dataUrl;
-      this.imageFileCounter++; // Incrementa el contador
-      this.updateTitle(); // Actualiza el título
-      
-    } catch (error) {
-      console.error('Error al capturar la imagen:', error);
-    }
-  };
 }
+

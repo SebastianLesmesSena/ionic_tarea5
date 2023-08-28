@@ -7,15 +7,14 @@
 
 <ion-content [fullscreen]="false">
 
-  <ion-card *ngIf="imageFileCounter > 0">
-    <img alt=". ¿Foto?" [src]="imageSource" />
+  <ion-card >
+    <img [src]="receivedImageSource" />
     <ion-card-header>
-      <ion-card-title>{{ title }}</ion-card-title>
-      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+      <ion-card-title>{{ receivedTitulo }}</ion-card-title>
     </ion-card-header>
   
     <ion-card-content>
-      Here's a small text description for the card content. Nothing more, nothing less.
+      {{receivedDescripcion}}
     </ion-card-content>
     
     <ion-button (click)="irDetalle()">Detalle</ion-button>
@@ -25,7 +24,7 @@
 
 <ion-footer>
   <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="radio" (click)="takePicture()">
+    <ion-tab-button tab="radio" (click)="irFormulario()">
       <ion-icon name="camera-outline"></ion-icon>
       Camara
     </ion-tab-button>
