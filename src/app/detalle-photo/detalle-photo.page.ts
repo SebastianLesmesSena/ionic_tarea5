@@ -14,6 +14,7 @@ export class DetallePhotoPage implements OnInit {
   imageSource: any;
   titulo: string='';
   Descripcion: string='';
+  selectedRating: number = 0;
 
   /*Aca se resiven los parametros */
   ngOnInit() {
@@ -30,18 +31,22 @@ export class DetallePhotoPage implements OnInit {
         imageSource: this.imageSource,
         titulo: this.titulo,
         Descripcion: this.Descripcion,
+        calificacion: this.selectedRating,
       },
     });
   }
 
-  irHome(){this.router.navigate(['/home'], 
-    {
-      queryParams: {
-        imageSource: this.imageSource,
-        titulo: this.titulo,
-        Descripcion: this.Descripcion,
-      },
-    });
+  stars = [
+    { iconName: 'star-outline', value: 1 },
+    { iconName: 'star-outline', value: 2 },
+    { iconName: 'star-outline', value: 3 },
+    { iconName: 'star-outline', value: 4 },
+    { iconName: 'star-outline', value: 5 },
+  ];
+  rate(selectedValue: number) {
+    this.selectedRating = selectedValue; // Almacenar el valor de calificación seleccionado
+    for (const star of this.stars) {
+      star.iconName = star.value <= selectedValue ? 'star' : 'star-outline';
+    }
   }
-
 }

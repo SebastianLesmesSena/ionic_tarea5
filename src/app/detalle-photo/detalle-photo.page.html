@@ -16,6 +16,18 @@
     <ion-card-content>
       {{Descripcion}}
     </ion-card-content>
+  
+    <div class="rating-container">
+      <ion-icon
+        *ngFor="let star of stars"
+        [name]="star.iconName"
+        (click)="rate(star.value)"
+      ></ion-icon>
+    </div>
+
+    <div class="selected-rating">
+      Calificación seleccionada: {{ selectedRating }}
+    </div>
   </ion-card>
 
 </ion-content>

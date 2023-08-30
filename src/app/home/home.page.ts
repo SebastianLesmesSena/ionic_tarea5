@@ -12,6 +12,7 @@ export class HomePage {
   receivedImageSource: any;
   receivedTitulo: string='';
   receivedDescripcion: string='';
+  reciveSelectedRating: number=0;
 
   constructor(private router: Router, private route: ActivatedRoute) {}
 
@@ -21,6 +22,7 @@ export class HomePage {
       this.receivedImageSource = params['imageSource'];
       this.receivedTitulo = params['titulo'];
       this.receivedDescripcion = params['Descripcion'];
+      this.reciveSelectedRating = params['calificacion']
     });
   }
 
@@ -36,5 +38,15 @@ export class HomePage {
       },
     });
   }
+
+  rate(selectedValue: number) {
+    this.reciveSelectedRating = selectedValue;
+  }
+  getStarsArray(rating: number): number[] {
+    const starsArray = new Array(Math.max(1, rating));
+    console.log('Stars Array:', starsArray);
+    return starsArray;
+  }
+  
 }
 

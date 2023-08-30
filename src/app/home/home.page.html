@@ -16,21 +16,17 @@
     <ion-card-content>
       {{receivedDescripcion}}
     </ion-card-content>
-    
-    <ion-button (click)="irDetalle()">Detalle</ion-button>
-  </ion-card>
 
-  <ion-card >
-    <img [src]="receivedImageSource" />
-    <ion-card-header>
-      <ion-card-title>{{ receivedTitulo }}</ion-card-title>
-    </ion-card-header>
-  
-    <ion-card-content>
-      {{receivedDescripcion}}
-    </ion-card-content>
+    <div *ngIf="reciveSelectedRating !== undefined">
+      <h4>Calificación seleccionada: {{reciveSelectedRating}}</h4>
+      <ion-icon
+        *ngFor="let _ of getStarsArray(reciveSelectedRating)"
+        name="star-sharp"
+      ></ion-icon>
+    </div>
     
     <ion-button (click)="irDetalle()">Detalle</ion-button>
+    
   </ion-card>
 
 </ion-content>
