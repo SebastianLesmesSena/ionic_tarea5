@@ -10,9 +10,9 @@ import { ActivatedRoute } from '@angular/router';
 export class HomePage {
 
   receivedImageSource: any;
-  receivedTitulo: string='';
-  receivedDescripcion: string='';
-  reciveSelectedRating: number=0;
+  receivedTitulo: string = '';
+  receivedDescripcion: string = '';
+  reciveSelectedRating: number = 0;
 
   constructor(private router: Router, private route: ActivatedRoute) {}
 
@@ -25,9 +25,6 @@ export class HomePage {
       this.reciveSelectedRating = params['calificacion']
     });
   }
-
-  irFormulario(){ this.router.navigate(['./formulario']);  }
-  salir() {    this.router.navigate(['./login']);  }
 
   /* aca se envian los parametros*/ 
   irDetalle() {this.router.navigate(['/detalle-photo'], {
@@ -47,6 +44,16 @@ export class HomePage {
     console.log('Stars Array:', starsArray);
     return starsArray;
   }
+
+  limpiar(){
+    this.receivedImageSource = '';
+    this.receivedTitulo = '';
+    this.receivedDescripcion = '';
+    this.reciveSelectedRating = 0;
+  }
   
+  irFormulario(){ this.router.navigate(['./formulario']);  }
+  salir() {    this.router.navigate(['./login']);  }
+
 }
 

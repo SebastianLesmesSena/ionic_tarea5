@@ -7,25 +7,25 @@
 
 <ion-content [fullscreen]="false">
 
-  <ion-card >
-    <img [src]="receivedImageSource" />
+  <ion-card *ngIf="receivedImageSource !== undefined">
+    <img *ngIf="receivedImageSource" [src]="receivedImageSource" />
+
     <ion-card-header>
       <ion-card-title>{{ receivedTitulo }}</ion-card-title>
     </ion-card-header>
   
-    <ion-card-content>
+    <ion-card-content *ngIf="receivedDescripcion">
       {{receivedDescripcion}}
     </ion-card-content>
 
-    <div *ngIf="reciveSelectedRating !== undefined">
-      <h4>Calificación seleccionada: {{reciveSelectedRating}}</h4>
-      <ion-icon
-        *ngFor="let _ of getStarsArray(reciveSelectedRating)"
-        name="star-sharp"
-      ></ion-icon>
+    <div *ngIf="reciveSelectedRating !== 0">
+      <h5>Calificación: <ion-icon slot="end" *ngFor="let _ of getStarsArray(reciveSelectedRating)" name="star-sharp"></ion-icon></h5>  
     </div>
     
-    <ion-button (click)="irDetalle()">Detalle</ion-button>
+    <ion-item>
+        <ion-button slot="start" (click)="irDetalle()">Detalle</ion-button>
+        <ion-button slot="end" (click)="limpiar()">limpiar</ion-button>
+    </ion-item>
     
   </ion-card>
 
