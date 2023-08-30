@@ -24,7 +24,15 @@ export class DetallePhotoPage implements OnInit {
     });
   }
 
-  back(){ this.router.navigate(['./home']) }
+  back(){this.router.navigate(['/home'], 
+    {
+      queryParams: {
+        imageSource: this.imageSource,
+        titulo: this.titulo,
+        Descripcion: this.Descripcion,
+      },
+    });
+  }
 
   irHome(){this.router.navigate(['/home'], 
     {

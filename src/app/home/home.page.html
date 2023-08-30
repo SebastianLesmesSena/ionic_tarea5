@@ -20,13 +20,26 @@
     <ion-button (click)="irDetalle()">Detalle</ion-button>
   </ion-card>
 
+  <ion-card >
+    <img [src]="receivedImageSource" />
+    <ion-card-header>
+      <ion-card-title>{{ receivedTitulo }}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      {{receivedDescripcion}}
+    </ion-card-content>
+    
+    <ion-button (click)="irDetalle()">Detalle</ion-button>
+  </ion-card>
+
 </ion-content>
 
 <ion-footer>
   <ion-tab-bar slot="bottom">
     <ion-tab-button tab="radio" (click)="irFormulario()">
       <ion-icon name="camera-outline"></ion-icon>
-      Camara
+      Tomar Foto
     </ion-tab-button>
   </ion-tab-bar>
 </ion-footer>

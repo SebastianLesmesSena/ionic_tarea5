@@ -19,7 +19,14 @@ export class FormularioPage implements OnInit {
 
   ngOnInit() {}
 
-  back(){ this.router.navigate(['./home'])  }
+  back(){this.router.navigate(['/home'], {
+      queryParams: {
+        imageSource: '',
+        titulo: '',
+        Descripcion: '',
+      },
+    }); 
+  }
 
   irHome(){this.router.navigate(['/home'], {
       queryParams: {

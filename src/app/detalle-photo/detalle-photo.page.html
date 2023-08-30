@@ -7,12 +7,15 @@
 
 <ion-content [fullscreen]="true">
 
-    contenido del detalle-photo
+  <ion-card>
+    <img src="{{imageSource}}">
+    <ion-card-header>
+      <ion-card-title>{{titulo}}</ion-card-title>
+    </ion-card-header>
 
-    <div>
-      <img src="{{imageSource}}">
-      {{titulo}}
+    <ion-card-content>
       {{Descripcion}}
-    </div>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>
