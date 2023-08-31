@@ -1,0 +1,15 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>map</ion-title>
+    <ion-button (click)="back()" slot="end">volver</ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-button expand="full" (click)="printCurrentPosition()">Obtener Ubicación</ion-button>
+  <br><br>
+  <ion-item>
+    <div>{{reciveCoordinates}}</div>
+    <ion-button (click)="limpiar()" slot="end">limpiar</ion-button>
+  </ion-item>
+</ion-content>

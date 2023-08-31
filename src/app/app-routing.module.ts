@@ -27,6 +27,10 @@ const routes: Routes = [
     path: 'formulario',
     loadChildren: () => import('./formulario/formulario.module').then( m => m.FormularioPageModule)
   },
+  {
+    path: 'map',
+    loadChildren: () => import('./map/map.module').then( m => m.MapPageModule)
+  },
 ];
 
 @NgModule({

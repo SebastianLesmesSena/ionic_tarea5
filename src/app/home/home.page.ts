@@ -13,6 +13,7 @@ export class HomePage {
   receivedTitulo: string = '';
   receivedDescripcion: string = '';
   reciveSelectedRating: number = 0;
+  reciveCoordinates: string = '';
 
   constructor(private router: Router, private route: ActivatedRoute) {}
 
@@ -22,7 +23,8 @@ export class HomePage {
       this.receivedImageSource = params['imageSource'];
       this.receivedTitulo = params['titulo'];
       this.receivedDescripcion = params['Descripcion'];
-      this.reciveSelectedRating = params['calificacion']
+      this.reciveSelectedRating = params['calificacion'];
+      this.reciveCoordinates = params ['direction'];
     });
   }
 
@@ -51,9 +53,13 @@ export class HomePage {
     this.receivedDescripcion = '';
     this.reciveSelectedRating = 0;
   }
+  quitar(){
+    this.reciveCoordinates = '';
+  }
   
-  irFormulario(){ this.router.navigate(['./formulario']);  }
-  salir() {    this.router.navigate(['./login']);  }
+  irFormulario(){ this.router.navigate(['./formulario'])};
+  irMap(){ this.router.navigate(['./map'])};
+  salir() {    this.router.navigate(['./login'])};
 
 }
 

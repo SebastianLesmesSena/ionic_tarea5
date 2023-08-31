@@ -29,6 +29,13 @@
     
   </ion-card>
 
+  <ion-card *ngIf="reciveCoordinates">
+    <ion-item>
+      {{reciveCoordinates}}
+      <ion-button slot="end" (click)="quitar()">Quitar</ion-button>
+    </ion-item>
+  </ion-card>
+
 </ion-content>
 
 <ion-footer>
@@ -36,6 +43,10 @@
     <ion-tab-button tab="radio" (click)="irFormulario()">
       <ion-icon name="camera-outline"></ion-icon>
       Tomar Foto
+    </ion-tab-button>
+    <ion-tab-button tab="radio" (click)="irMap()">
+      <ion-icon name="location-outline"></ion-icon>
+      Tomar Ubicación
     </ion-tab-button>
   </ion-tab-bar>
 </ion-footer>

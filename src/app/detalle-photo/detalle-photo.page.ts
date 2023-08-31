@@ -25,6 +25,7 @@ export class DetallePhotoPage implements OnInit {
     });
   }
 
+  /* Aca se envian los parametros*/
   back(){this.router.navigate(['/home'], 
     {
       queryParams: {
